@@ -29,7 +29,14 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2025-01-01' = {
               service: 'Microsoft.Sql'
             }
           ]
-          delegations: []
+          delegations: [
+            {
+              name: 'Microsoft.App-environments'
+              properties: {
+                serviceName: 'Microsoft.App/environments'
+              }
+            }
+          ]
           privateEndpointNetworkPolicies: 'Enabled'
           privateLinkServiceNetworkPolicies: 'Enabled'
         }
